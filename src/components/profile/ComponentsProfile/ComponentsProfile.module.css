@@ -1,0 +1,14 @@
+.item{
+    color:green;
+}
+
+.PostItem{
+    font-family: Arial;
+    color:#282c34;
+
+}
+
+.PostItem img{
+    border-radius: 30%;
+    width: 5%;
+}
