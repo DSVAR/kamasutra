@@ -2,11 +2,19 @@
     color:aliceblue;
     font-family: "Arial Narrow";
     font-size:20px;
-    padding-bottom: 10px;
+
+    padding: 5px 0 10px 20px;
 }
 
 .nav {
     grid-area: n;
     background-color: darkgrey;
     color:white;
+}
+.nav a{
+    color: white;
+    text-decoration: none;
+}
+.nav a.active{
+    color:red;
 }

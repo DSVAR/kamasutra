@@ -1,6 +1,23 @@
-.content {
-    grid-area: c;
-    background-color: bisque;
+.dialogs{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+.dialogs-message{
 
 }
 
+.dialogs-user{
+    padding: 10px;
+}
+
+.user{
+    padding: 10px;
+}
+
+.messages{
+
+}
+
+.message{
+
+}
