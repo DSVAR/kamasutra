@@ -2,22 +2,29 @@
     display: grid;
     grid-template-columns: 2fr 10fr;
 }
-.dialogs-message{
 
-}
-
-.dialogs-user{
+.dialogsUser{
     padding: 10px;
+    border-right: groove 1px green;
+}
+.dialogsUser a{
+    color:blueviolet;
+    text-decoration: none;
 }
 
+.dialogsUser img{
+    width:60px ;
+    border-radius: 20px;
+}
 .user{
     padding: 10px;
+
 }
 
 .messages{
-
+    padding: 0 0 0 1px;
 }
 
 .message{
-
+    padding: 0 0 0 10px;
 }
