@@ -9,10 +9,10 @@ import Message from "./compontsDialogs/Message";
 
 const Dialogs = (props) => {
 
-    const listUsers=props.users.map(user=>
+    const listUsers=props.state.users.map(user=>
         <User key={user.ID} ID={user.ID} Name={user.Name} Url={user.Url}/>
     );
-    const listMessages=props.messages.map(mes=>
+    const listMessages=props.state.messages.map(mes=>
         <Message key={mes.ID} Nick={mes.Nick} Message={mes.Message}/>
     )
 

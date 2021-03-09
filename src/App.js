@@ -18,8 +18,11 @@ const App = (props) => {
                     {/*<Route exact path="/dialogs" component={Dialogs}/>*/}
                     {/*<Route path='/profile' component={Profile}/>*/}
 
-                    <Route exact path="/dialogs" render={()=><Dialogs users={props.user} messages={props.message}/>}/>
-                    <Route path='/profile' render={()=><Profile/>}/>
+                    <Route exact path="/dialogs" render={()=><Dialogs
+                        state={props.appState.dialogs}
+                    />}/>
+
+                        <Route path='/profile' render={()=><Profile/>}/>
                 </div>
             </div>
         </BrowserRouter>
