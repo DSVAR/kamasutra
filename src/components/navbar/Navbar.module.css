@@ -18,3 +18,16 @@
 .nav a.active{
     color:red;
 }
+
+.friendPhoto{
+    padding:0 10px 0 5px;
+
+}
+.friendPhoto img{
+    width: 60px;
+    border-radius: 30px;
+}
+.friends{
+    padding:20px 0 0 0;
+    display: flex;
+}
