@@ -11,8 +11,8 @@ let State = {
             {ID: '1', Name: "RAtataat", Url: 'https://i.ytimg.com/vi/iVFmoi6N9B0/maxresdefault.jpg'}
         ],
         messages: [
-            {ID: 0, Nick: "Me", Message: "Hello",right:true},
-            {ID: 1, Nick: "DDvar", Message: "Hi,How are u?",right: false}
+            {ID: 0, Nick: "Me", Message: "Hello",Right:true},
+            {ID: 1, Nick: "DDvar", Message: "Hi,How are u?",Right: false}
         ]
     },
     sidebar:{

@@ -23,8 +23,18 @@
 
 .messages{
     padding: 0 0 0 1px;
+
+
 }
 
 .message{
     padding: 0 0 0 10px;
+    border: red 1px solid;
+
+}
+.messageRight{
+    padding: 0 20px 0 10px;
+    text-align: right;
+    border: blue 1px solid;
+
 }

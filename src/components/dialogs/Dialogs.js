@@ -13,7 +13,7 @@ const Dialogs = (props) => {
         <User key={user.ID} ID={user.ID} Name={user.Name} Url={user.Url}/>
     );
     const listMessages=props.state.messages.map(mes=>
-        <Message key={mes.ID} Nick={mes.Nick} Message={mes.Message}/>
+        <Message key={mes.ID} Right={mes.Right} Nick={mes.Nick} Message={mes.Message}/>
     )
 
 
