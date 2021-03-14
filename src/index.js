@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from "./App";
 import reportWebVitals from './reportWebVitals';
-import State from './Redux/State'
+import State,{AddMessage} from './Redux/State'
+
+//AddMessage("pider")
 
 ReactDOM.render(
   <React.StrictMode>
-
     <App appState={State} />
   </React.StrictMode>,
   document.getElementById('root')

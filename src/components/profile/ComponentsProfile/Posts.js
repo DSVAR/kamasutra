@@ -3,11 +3,19 @@ import Classes from './ComponentsProfile.module.css'
 import Post from "./Post";
 
 const Posts = () => {
+
+    let reg= React.createRef();
+
+    let click=()=>{
+        alert(reg.current.value);
+
+    }
+
     return (
         <div>
             <div>
-                <textarea></textarea>
-                <button>Add post</button>
+                <textarea ref={reg}></textarea>
+                <button onClick={click}>Add post</button>
                 <button>Remove</button>
             </div>
             <Post photourl="https://i.pinimg.com/originals/bf/75/9b/bf759b9beeecf5be32f514aa94b23705.jpg" message="Pisun"/>

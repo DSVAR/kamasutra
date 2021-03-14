@@ -24,4 +24,14 @@ let State = {
     }
 }
 
+export let AddMessage=(Message)=>{
+    let MessageNew={
+        ID:2,
+        Message:Message,
+        Nick:"Me",
+        right:true
+    };
+
+    State.dialogs.messages.push(MessageNew);
+}
 export default State;
