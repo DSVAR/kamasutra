@@ -19,9 +19,8 @@ const App = (props) => {
                     {/*<Route path='/profile' component={Profile}/>*/}
 
                     <Route exact path="/dialogs" render={()=><Dialogs
-                        state={props.appState.dialogs}
+                        state={props.appState.dialogs} addMessage={props.addMessage}
                     />}/>
-
                         <Route path='/profile' render={()=><Profile/>}/>
                 </div>
             </div>

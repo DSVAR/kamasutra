@@ -1,3 +1,4 @@
+import {rerender} from "../render";
 
 let State = {
 
@@ -25,13 +26,15 @@ let State = {
 }
 
 export let AddMessage=(Message)=>{
+
     let MessageNew={
         ID:2,
         Message:Message,
         Nick:"Me",
-        right:true
+        Right:true
     };
 
     State.dialogs.messages.push(MessageNew);
+        rerender(State)
 }
 export default State;

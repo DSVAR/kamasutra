@@ -5,25 +5,24 @@ import User from "./compontsDialogs/User";
 import Message from "./compontsDialogs/Message";
 
 
-
-
 const Dialogs = (props) => {
 
-    const listUsers=props.state.users.map(user=>
+    const listUsers = props.state.users.map(user =>
         <User key={user.ID} ID={user.ID} Name={user.Name} Url={user.Url}/>
     );
-    const listMessages=props.state.messages.map(mes=>
+    const listMessages = props.state.messages.map(mes =>
         <Message key={mes.ID} Right={mes.Right} Nick={mes.Nick} Message={mes.Message}/>
     )
-    let text=React.createRef();
-    let mess=()=>{
-        alert(text.current.value);
+    let text = React.createRef();
+    let mess = () => {
+        props.addMessage(text.current.value);
+        //alert();
     }
 
     return (
         <div className={Classes.dialogs}>
             <div className={Classes.dialogsUser}>
-               {listUsers}
+                {listUsers}
             </div>
 
             <div className={Classes.messages}>
