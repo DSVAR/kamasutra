@@ -1,5 +1,7 @@
-import {rerender} from "../render";
 
+let rerender=()=>{
+    console.log("debian");
+}
 let State = {
 
     dialogs: {
@@ -15,7 +17,7 @@ let State = {
             {ID: 0, Nick: "Me", Message: "Hello",Right:true},
             {ID: 1, Nick: "DDvar", Message: "Hi,How are u?",Right: false}
         ],
-        newMessage:"ItDava"
+        newMessage:'ItDava'
 
     },
     sidebar:{
@@ -28,22 +30,28 @@ let State = {
 
 }
 
-export let AddMessage=(Message)=>{
+export const AddMessage=()=>{
 
     let MessageNew={
         ID:2,
-        Message:Message,
+        Message:State.dialogs.newMessage,
         Nick:"Me",
         Right:true
     };
 
     State.dialogs.messages.push(MessageNew);
-        rerender(State)
+    State.dialogs.newMessage='';
+    rerender(State)
 }
 
-export let updateMessage=(text)=>{
+export const updateMessage=(text)=>{
+
     State.dialogs.newMessage=text;
     rerender(State)
 }
 
+export const subscribe=(observer)=>{
+    rerender=observer;
+
+}
 export default State;
