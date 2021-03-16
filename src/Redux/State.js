@@ -14,7 +14,9 @@ let State = {
         messages: [
             {ID: 0, Nick: "Me", Message: "Hello",Right:true},
             {ID: 1, Nick: "DDvar", Message: "Hi,How are u?",Right: false}
-        ]
+        ],
+        newMessage:"ItDava"
+
     },
     sidebar:{
         friends:[
@@ -23,6 +25,7 @@ let State = {
             {Id:'2',Name:'Debik',Url:'https://w7.pngwing.com/pngs/78/95/png-transparent-pentagram-pentacle-satanism-wicca-symbol-symbol-miscellaneous-monochrome-magic.png'}
             ]
     }
+
 }
 
 export let AddMessage=(Message)=>{
@@ -37,4 +40,10 @@ export let AddMessage=(Message)=>{
     State.dialogs.messages.push(MessageNew);
         rerender(State)
 }
+
+export let updateMessage=(text)=>{
+    State.dialogs.newMessage=text;
+    rerender(State)
+}
+
 export default State;
