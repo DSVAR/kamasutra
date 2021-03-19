@@ -11,7 +11,7 @@ export let rerender=(state)=>{
     ReactDOM.render(
 
         <React.StrictMode>
-            <App appState={state}  updateText={store.updateMessage.bind(store)} addMessage={store.AddMessage.bind(store)}/>
+            <App appState={state}  dispatch={store.dispatch.bind(store)} />
         </React.StrictMode>,
         document.getElementById('root')
     );

@@ -1,4 +1,4 @@
-let store={
+let store = {
     _State: {
 
         dialogs: {
@@ -11,57 +11,73 @@ let store={
                 {ID: '1', Name: "RAtataat", Url: 'https://i.ytimg.com/vi/iVFmoi6N9B0/maxresdefault.jpg'}
             ],
             messages: [
-                {ID: 0, Nick: "Me", Message: "Hello",Right:true},
-                {ID: 1, Nick: "DDvar", Message: "Hi,How are u?",Right: false}
+                {ID: 0, Nick: "Me", Message: "Hello", Right: true},
+                {ID: 1, Nick: "DDvar", Message: "Hi,How are u?", Right: false}
             ],
-            newMessage:'ItDava'
+            newMessage: 'ItDava'
 
         },
-        sidebar:{
-            friends:[
-                {Id:'0',Name:'Davar',Url:'https://w7.pngwing.com/pngs/78/95/png-transparent-pentagram-pentacle-satanism-wicca-symbol-symbol-miscellaneous-monochrome-magic.png'},
-                {Id:'1',Name:'Ratat',Url:'https://w7.pngwing.com/pngs/78/95/png-transparent-pentagram-pentacle-satanism-wicca-symbol-symbol-miscellaneous-monochrome-magic.png'},
-                {Id:'2',Name:'Debik',Url:'https://w7.pngwing.com/pngs/78/95/png-transparent-pentagram-pentacle-satanism-wicca-symbol-symbol-miscellaneous-monochrome-magic.png'}
+        sidebar: {
+            friends: [
+                {
+                    Id: '0',
+                    Name: 'Davar',
+                    Url: 'https://w7.pngwing.com/pngs/78/95/png-transparent-pentagram-pentacle-satanism-wicca-symbol-symbol-miscellaneous-monochrome-magic.png'
+                },
+                {
+                    Id: '1',
+                    Name: 'Ratat',
+                    Url: 'https://w7.pngwing.com/pngs/78/95/png-transparent-pentagram-pentacle-satanism-wicca-symbol-symbol-miscellaneous-monochrome-magic.png'
+                },
+                {
+                    Id: '2',
+                    Name: 'Debik',
+                    Url: 'https://w7.pngwing.com/pngs/78/95/png-transparent-pentagram-pentacle-satanism-wicca-symbol-symbol-miscellaneous-monochrome-magic.png'
+                }
             ]
         }
 
     },
-    getState(){
+    getState() {
         return this._State;
     },
-    rerender()
-    {
+    rerender() {
         console.log("debian");
     },
-    AddMessage()
-    {
-
-        let MessageNew={
-            ID:2,
-            Message:this._State.dialogs.newMessage,
-            Nick:"Me",
-            Right:true
-        };
-
-        this._State.dialogs.messages.push(MessageNew);
-        this._State.dialogs.newMessage='';
-        this.rerender(this._State)
+    AddMessage() {
     },
-    updateMessage(text)
-    {
+    updateMessage(text) {
 
-        this._State.dialogs.newMessage=text;
-        this.rerender(this._State)
     },
-    subscribe(observer){
-        this.rerender=observer;
+    subscribe(observer) {
+        this.rerender = observer;
+
+    },
+
+    dispatch(action) {
+        switch (action.type) {
+            case 'ADD-MESSAGE': {
+                let MessageNew = {
+                    ID: 2,
+                    Message: this._State.dialogs.newMessage,
+                    Nick: "Me",
+                    Right: true
+                };
+
+                this._State.dialogs.messages.push(MessageNew);
+                this._State.dialogs.newMessage = '';
+                this.rerender(this._State)
+
+            }
+            case 'UPDATE-MESSAGE': {
+
+                this._State.dialogs.newMessage = action.text;
+                this.rerender(this._State)
+            }
+        }
 
     }
 }
-
-
-
-
 
 
 export default store;
