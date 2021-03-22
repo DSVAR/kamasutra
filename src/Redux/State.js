@@ -1,3 +1,7 @@
+const UpdateMessage = 'UPDATE-MESSAGE';
+const AddMessage = 'ADD-MESSAGE';
+
+
 let store = {
     _State: {
 
@@ -56,7 +60,7 @@ let store = {
 
     dispatch(action) {
         switch (action.type) {
-            case 'ADD-MESSAGE': {
+            case AddMessage: {
                 let MessageNew = {
                     ID: 2,
                     Message: this._State.dialogs.newMessage,
@@ -69,7 +73,7 @@ let store = {
                 this.rerender(this._State)
 
             }
-            case 'UPDATE-MESSAGE': {
+            case UpdateMessage: {
 
                 this._State.dialogs.newMessage = action.text;
                 this.rerender(this._State)
@@ -78,6 +82,15 @@ let store = {
 
     }
 }
+
+
+export const addMessageActionCreator = () => ({type: AddMessage})
+
+export const updateNewMessageActionCreator = (message) => ({
+    type: UpdateMessage,
+    text: message
+
+})
 
 
 export default store;
