@@ -1,6 +1,6 @@
 const UpdateMessage = 'UPDATE-MESSAGE';
 const AddMessage = 'ADD-MESSAGE';
-
+const AddPost = 'ADD-POST';
 
 let store = {
     _State: {
@@ -20,6 +20,12 @@ let store = {
             ],
             newMessage: 'ItDava'
 
+        },
+        posts: {
+            post:
+                [{ID: '0', Text: 'kuk', Name: 'Ddavar',Img:''},
+                    {ID: '1', Text: 'kuk1', Name: 'Ratatata',Img:''}],
+            textNew: 'Dva'
         },
         sidebar: {
             friends: [
@@ -46,12 +52,6 @@ let store = {
         return this._State;
     },
     rerender() {
-        console.log("debian");
-    },
-    AddMessage() {
-    },
-    updateMessage(text) {
-
     },
     subscribe(observer) {
         this.rerender = observer;
@@ -71,12 +71,24 @@ let store = {
                 this._State.dialogs.messages.push(MessageNew);
                 this._State.dialogs.newMessage = '';
                 this.rerender(this._State)
-
+                break;
             }
             case UpdateMessage: {
 
                 this._State.dialogs.newMessage = action.text;
                 this.rerender(this._State)
+                break;
+            }
+            case AddPost: {
+                let postNew = {
+                    ID: 2,
+                    Message: this._State.posts.textNew,
+                    Nick: "SomeOne"
+                };
+                this._State.posts.post.push(postNew)
+                this._State.posts.textNew=''
+                this.rerender(this._State)
+                break;
             }
         }
 

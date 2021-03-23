@@ -4,12 +4,15 @@ import Posts from "./ComponentsProfile/Posts";
 import Avatar from "./ComponentsProfile/Avatar";
 import Wallpaper from "./ComponentsProfile/Wallpaper";
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <div className={Classes.content}>
             <Wallpaper/>
             <Avatar/>
-            <Posts/>
+            <Posts
+                dispathc={props.dispatch}
+                state={props.state}
+            />
         </div>
     );
 };

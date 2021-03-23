@@ -4,8 +4,9 @@ import Classes from "./ComponentsProfile.module.css";
 const Post = (props) => {
     return (
         <div className={Classes.PostItem}>
-            <img src={props.photourl}/>
-            {props.message}
+            <p>{props.Name}</p>
+            <img src={props.Photourl}/>
+            {props.Text}
         </div>
     );
 };
