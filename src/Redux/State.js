@@ -1,3 +1,5 @@
+import {act} from "@testing-library/react";
+
 const UpdateMessage = 'UPDATE-MESSAGE';
 const AddMessage = 'ADD-MESSAGE';
 const AddPost = 'ADD-POST';
@@ -23,8 +25,8 @@ let store = {
         },
         posts: {
             post:
-                [{ID: '0', Text: 'kuk', Name: 'Ddavar',Img:''},
-                    {ID: '1', Text: 'kuk1', Name: 'Ratatata',Img:''}],
+                [{ID: '0', Text: 'kuk', Name: 'Ddavar',Img:'https://avatars.mds.yandex.net/get-zen_doc/985972/pub_5d63ef4cf73d9d00adeba678_5d63f06bf73d9d00adeba67e/scale_1200'},
+                    {ID: '1', Text: 'kuk1', Name: 'Ratatata',Img:'https://i.ytimg.com/vi/iVFmoi6N9B0/maxresdefault.jpg'}],
             textNew: 'Dva'
         },
         sidebar: {
@@ -76,16 +78,19 @@ let store = {
             case UpdateMessage: {
 
                 this._State.dialogs.newMessage = action.text;
+                this._State.posts.textNew=action.text;
                 this.rerender(this._State)
                 break;
             }
             case AddPost: {
+
                 let postNew = {
                     ID: 2,
-                    Message: this._State.posts.textNew,
-                    Nick: "SomeOne"
+                    Text: this._State.posts.textNew,
+                    Name: "Ratatata",
+                    Img:'https://i.ytimg.com/vi/iVFmoi6N9B0/maxresdefault.jpg'
                 };
-                this._State.posts.post.push(postNew)
+                this._State.posts.post.push(postNew);
                 this._State.posts.textNew=''
                 this.rerender(this._State)
                 break;
@@ -101,8 +106,8 @@ export const addMessageActionCreator = () => ({type: AddMessage})
 export const updateNewMessageActionCreator = (message) => ({
     type: UpdateMessage,
     text: message
-
 })
 
+export const addPostActionCreator=()=>({type: AddPost})
 
 export default store;
