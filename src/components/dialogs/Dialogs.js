@@ -3,7 +3,11 @@ import Classes from './dialog.module.css'
 import {NavLink} from "react-router-dom";
 import User from "./compontsDialogs/User";
 import Message from "./compontsDialogs/Message";
-import {addMessageActionCreator, updateNewMessageActionCreator} from "../../Redux/State";
+import {
+    addMessageActionCreator,
+    updateInNewMessageActionCreator,
+    updateNewMessageActionCreator
+} from "../../Redux/State";
 
 
 
@@ -27,7 +31,7 @@ const Dialogs = (props) => {
     let onPostChange=()=>{
         let ter=text.current.value;
         //props.updateText(ter);
-        props.dispatch(updateNewMessageActionCreator(ter))
+        props.dispatch(updateInNewMessageActionCreator(ter))
     }
     return (
 

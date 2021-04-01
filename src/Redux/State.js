@@ -1,6 +1,7 @@
 import {act} from "@testing-library/react";
 
 const UpdateMessage = 'UPDATE-MESSAGE';
+const UpdateTextMessage='UPDATE-TEXT-MESSAGE';
 const AddMessage = 'ADD-MESSAGE';
 const AddPost = 'ADD-POST';
 
@@ -77,7 +78,7 @@ let store = {
             }
             case UpdateMessage: {
 
-                this._State.dialogs.newMessage = action.text;
+
                 this._State.posts.textNew=action.text;
                 this.rerender(this._State)
                 break;
@@ -95,6 +96,11 @@ let store = {
                 this.rerender(this._State)
                 break;
             }
+            case UpdateTextMessage:{
+                this._State.dialogs.newMessage = action.text;
+                this.rerender(this._State)
+                break;
+            }
         }
 
     }
@@ -103,6 +109,10 @@ let store = {
 
 export const addMessageActionCreator = () => ({type: AddMessage})
 
+export const updateInNewMessageActionCreator=(newMessage)=>({
+    type: UpdateTextMessage,
+    text: newMessage
+})
 export const updateNewMessageActionCreator = (message) => ({
     type: UpdateMessage,
     text: message
