@@ -4,10 +4,8 @@ import {NavLink} from "react-router-dom";
 import User from "./compontsDialogs/User";
 import Message from "./compontsDialogs/Message";
 import {
-    addMessageActionCreator,
-    updateInNewMessageActionCreator,
-    updateNewMessageActionCreator
-} from "../../Redux/State";
+    addMessageActionCreator, updateInNewMessageActionCreator
+} from "../../Redux/dialogs-reducer";
 
 
 
@@ -28,8 +26,8 @@ const Dialogs = (props) => {
         //alert();
     }
 
-    let onPostChange=()=>{
-        let ter=text.current.value;
+    let onPostChange=(e)=>{
+        let ter=  e.target.value;
         //props.updateText(ter);
         props.dispatch(updateInNewMessageActionCreator(ter))
     }
