@@ -4,7 +4,7 @@ import dialogcReducer from "./dialogs-reducer";
 
 
 let store = {
-    _State: {
+    _state: {
 
         dialogs: {
             users: [
@@ -50,7 +50,7 @@ let store = {
 
     },
     getState() {
-        return this._State;
+        return this._state;
     },
     rerender() {
     },
@@ -61,12 +61,10 @@ let store = {
 
     dispatch(action) {
 
-        this._State.posts=  profileReducer(this._State.posts,action);
-        this._State.dialogs= dialogcReducer(this._State.dialogs,action);
+        this._state.posts=  profileReducer(this._state.posts,action);
+        this._state.dialogs= dialogcReducer(this._state.dialogs,action);
 
-        this.rerender(this._State)
-
-
+        this.rerender(this._state)
     }
 }
 

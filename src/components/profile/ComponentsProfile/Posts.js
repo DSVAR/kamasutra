@@ -5,7 +5,7 @@ import {updateNewMessageActionCreator,addPostActionCreator} from "../../../Redux
 
 const Posts = (props) => {
 
-    let posts=props.state.post.map(
+    let posts=props.posts.map(
         post=>
     <Post key={post.id} Photourl={post.Img} Name={post.Name} Text={post.Text}  />
     )
@@ -13,20 +13,20 @@ const Posts = (props) => {
     let reg= React.createRef();
 
     let click=()=>{
-        //alert(reg.current.value);
-        props.dispathc(addPostActionCreator())
+        //alert(reg.current.value)
+       props.addPost()
     }
 
     let onPostChange=()=>{
         let text=reg.current.value;
-        props.dispathc(updateNewMessageActionCreator(text))
+        props.updateText(text);
     }
 
     return (
 
         <div>
             <div>
-                <textarea value={props.state.textNew} ref={reg } onChange={onPostChange} ref={reg}></textarea>
+                <textarea value={props.textNew} ref={reg } onChange={onPostChange} ref={reg}></textarea>
                 <button onClick={click}>Add post</button>
                 <button>Remove</button>
                 {posts}

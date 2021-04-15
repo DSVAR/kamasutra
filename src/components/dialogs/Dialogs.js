@@ -11,25 +11,26 @@ import {
 
 const Dialogs = (props) => {
 
-    const listUsers = props.state.users.map(user =>
+    let state= props.state;
+
+    const listUsers = state.users.map(user =>
         <User key={user.ID} ID={user.ID} Name={user.Name} Url={user.Url}/>
     );
-    const listMessages = props.state.messages.map(mes =>
+    const listMessages =state.messages.map(mes =>
         <Message key={mes.ID} Right={mes.Right} Nick={mes.Nick} Message={mes.Message}/>
     )
-    let text = React.createRef();
+
 
 
     let mess = () => {
-        props.dispatch(addMessageActionCreator());
+        props.addMess();
         //props.addMessage(text.current.value);
         //alert();
     }
 
     let onPostChange=(e)=>{
-        let ter=  e.target.value;
-        //props.updateText(ter);
-        props.dispatch(updateInNewMessageActionCreator(ter))
+        let body=  e.target.value;
+        props.changeText(body);
     }
     return (
 
@@ -40,7 +41,7 @@ const Dialogs = (props) => {
 
             <div className={Classes.messages}>
                 {listMessages}
-                <textarea onChange={onPostChange} ref={text} value={props.state.newMessage}/>
+                <textarea onChange={onPostChange} value={props.newMessage}/>
                 <button onClick={mess}>Отправить</button>
             </div>
         </div>

@@ -4,8 +4,8 @@ import Header from "./components/header/Header";
 import Navbar from "./components/navbar/Navbar";
 import Profile from "./components/profile/Profile";
 import "./style.css";
-import Dialogs from "./components/dialogs/Dialogs";
 import {BrowserRouter, Route} from 'react-router-dom'
+import DialogsContainer from "./components/dialogs/DialogsContainer";
 
 const App = (props) => {
     return (
@@ -15,7 +15,8 @@ const App = (props) => {
                 <Navbar state={props.appState.sidebar}/>
 
                 <div className='app-wrapper-content'>
-                    <Route exact path="/dialogs" render={() => <Dialogs
+                    <Route exact path="/dialogs" render={() => <DialogsContainer
+                        store={props.store}
                         state={props.appState.dialogs}
                         dispatch={props.dispatch}
                     />}/>
