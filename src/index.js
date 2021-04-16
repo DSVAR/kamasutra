@@ -5,13 +5,16 @@ import './index.css';
 import App from "./App";
 import reportWebVitals from './reportWebVitals';
 import store from './Redux/redux-store'
+import StoreContext from "./Store-Context";
 
 export let rerender=(state)=>{
 
     ReactDOM.render(
 
         <React.StrictMode>
-            <App appState={state}  dispatch={store.dispatch.bind(store)} store={store}/>
+            <StoreContext.Provider value={store}>
+                <App/>
+            </StoreContext.Provider>
         </React.StrictMode>,
         document.getElementById('root')
     );

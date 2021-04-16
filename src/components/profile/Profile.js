@@ -10,10 +10,7 @@ const Profile = (props) => {
         <div className={Classes.content}>
             <Wallpaper/>
             <Avatar/>
-            <PostsContainer
-                dispathc={props.dispatch}
-                state={props.state}
-            />
+            <PostsContainer/>
         </div>
     );
 };
