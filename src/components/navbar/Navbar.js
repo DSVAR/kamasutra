@@ -2,19 +2,12 @@ import React from 'react';
 import Classes from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
 import Friends from "./NavComponents/Friends";
-import StoreContext from "../../Store-Context";
 
 const Navbar = (props) => {
 
     return (
-        <StoreContext.Consumer>{
-            (Store)=>{
-
-                let state=Store.getState();
-                const friend=state.sidebar.friends.map(friend=>
-                    <Friends Url={friend.Url} />);
-
-            return (
+        
+        
                 <nav className={Classes.nav}>
                     <div className={Classes.item}>
                         <NavLink  to="/profile" activeClassName={Classes.active}>Profile</NavLink>
@@ -33,13 +26,13 @@ const Navbar = (props) => {
                     </div>
 
                     <div className={Classes.friends}>
-                        {friend}
+                        {/*{friend}*/}
                     </div>
                 </nav>
-             )
-            }
-        }
-        </StoreContext.Consumer>
+             
+            
+        
+        
     );
 };
 

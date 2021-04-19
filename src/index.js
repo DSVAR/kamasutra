@@ -5,17 +5,19 @@ import './index.css';
 import App from "./App";
 import reportWebVitals from './reportWebVitals';
 import store from './Redux/redux-store'
-import StoreContext, {Provider} from "./Store-Context";
+import {Provider} from "react-redux";
+import {BrowserRouter} from "react-router-dom";
+//import StoreContext, {Provider} from "./Store-Context";
 
 export let rerender=(state)=>{
 
     ReactDOM.render(
 
-        <React.StrictMode>
+        <BrowserRouter>
             <Provider store={store}>
                 <App/>
             </Provider>
-        </React.StrictMode>,
+        </BrowserRouter>,
         document.getElementById('root')
     );
 }
