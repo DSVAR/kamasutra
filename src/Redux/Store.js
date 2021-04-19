@@ -65,6 +65,7 @@ let store = {
         this._state.dialogs= dialogcReducer(this._state.dialogs,action);
 
         this.rerender(this._state)
+
     }
 }
 

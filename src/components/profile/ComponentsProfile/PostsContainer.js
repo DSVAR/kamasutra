@@ -2,25 +2,29 @@ import {updateNewMessageActionCreator,addPostActionCreator} from "../../../Redux
 import Posts from "./Posts";
 import StoreContext from "../../../Store-Context";
 
+
 const PostsContainer = (props) => {
 
-
-
-    let clickContainer=()=>{
-        //alert(reg.current.value);
-        props.dispathc(addPostActionCreator())
-    }
-
-    let onPostChangeContainer=(text)=>{
-
-        props.dispathc(updateNewMessageActionCreator(text))
-    }
-
     return (
-        <StoreContext.Consumer>
-        <Posts updateText={onPostChangeContainer} 
-               addPost={clickContainer} posts={props.state.post} 
-               textNew={props.state.textNew}/>
+        <StoreContext.Consumer> 
+            {
+            (Store)=>
+            {
+                let state=Store.getState();
+               let clickContainer=()=>{
+                   Store.dispatch(addPostActionCreator())
+
+                }
+
+                let onPostChangeContainer=(text)=>{
+
+                    Store.dispatch(updateNewMessageActionCreator(text))
+                }
+            return <Posts updateText={onPostChangeContainer}
+               addPost={clickContainer} posts={state.posts.post}
+               textNew={state.posts.textNew}/>
+            }
+        }
         </StoreContext.Consumer>
         );
 };
