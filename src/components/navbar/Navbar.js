@@ -4,10 +4,10 @@ import {NavLink} from "react-router-dom";
 import Friends from "./NavComponents/Friends";
 
 const Navbar = (props) => {
-
-    return (
-        
-        
+    let imgFriend=props.state.friends.map(
+        Img=><Friends key={Img.Id} Url={Img.Url} />)
+    
+    return (        
                 <nav className={Classes.nav}>
                     <div className={Classes.item}>
                         <NavLink  to="/profile" activeClassName={Classes.active}>Profile</NavLink>
@@ -26,14 +26,11 @@ const Navbar = (props) => {
                     </div>
 
                     <div className={Classes.friends}>
-                        {/*{friend}*/}
+                        {imgFriend}
                     </div>
-                </nav>
-             
-            
-        
-        
+                </nav>        
     );
 };
+
 
 export default Navbar;

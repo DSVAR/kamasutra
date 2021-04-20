@@ -29,15 +29,16 @@ let initialState={
                 Nick: "Me",
                 Right: true
             };
-
-            state.messages.push(MessageNew);
-            state.newMessage = '';
-            return state;
+            let copyState={...state};
+            copyState.messages.push(MessageNew);
+            copyState.newMessage = '';
+            return copyState;
         }
 
         case UpdateTextMessage:{
-            state.newMessage = action.text;
-            return state;
+            let copyState={...state};
+            copyState.newMessage = action.text;
+            return copyState;
         }
         default:  return state;
     }

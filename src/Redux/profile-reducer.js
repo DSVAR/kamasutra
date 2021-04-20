@@ -14,20 +14,22 @@ let initialState={
     switch (action.type) {
 
         case UpdateMessage: {
-            state.textNew=action.text;
-            return state;
+            let copyState={...state};
+            copyState.textNew=action.text;
+            return copyState;
         }
         case AddPost: {
 
             let postNew = {
-                ID: 2,
+                ID: 3,
                 Text: state.textNew,
                 Name: "Ratatata",
                 Img:'https://i.ytimg.com/vi/iVFmoi6N9B0/maxresdefault.jpg'
             };
-            state.post.push(postNew);
-            state.textNew=''
-            return state;
+            let copyState={...state};         
+            copyState.post.push(postNew);
+            copyState.textNew=''
+            return copyState;
         }
         default:   return state;
 

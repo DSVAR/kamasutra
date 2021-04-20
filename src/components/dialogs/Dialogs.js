@@ -29,6 +29,7 @@ const Dialogs = (props) => {
     }
 
     let onPostChange=(e)=>{
+        
         let body=  e.target.value;
         props.changeText(body);
     }

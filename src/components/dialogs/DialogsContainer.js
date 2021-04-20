@@ -20,7 +20,7 @@ let mapDialogsToProps=(state)=>{
 let mapDispatchToProps=(dispatch)=>{
     return{
         addMess:()=>{  dispatch(addMessageActionCreator())},
-        changeTet:(body)=>{dispatch(updateInNewMessageActionCreator(body))}
+        changeText:(body)=>{dispatch(updateInNewMessageActionCreator(body))}
     }
 }
 
