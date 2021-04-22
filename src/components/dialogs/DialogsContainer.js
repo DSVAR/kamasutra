@@ -15,13 +15,13 @@ let mapDialogsToProps=(state)=>{
     return{
         state:state.dialogs,
         newMessage:state.dialogs.newMessage
-    }
+    }//Отдаем props +отслеживаем состояние компонента
 }
 let mapDispatchToProps=(dispatch)=>{
     return{
         addMess:()=>{  dispatch(addMessageActionCreator())},
         changeText:(body)=>{dispatch(updateInNewMessageActionCreator(body))}
-    }
+    }//отдаем callbacks
 }
 
 const DialogsContainer=connect(mapDialogsToProps,mapDispatchToProps)(Dialogs);

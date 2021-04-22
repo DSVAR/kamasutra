@@ -40,8 +40,6 @@ let initialState={
         case UpdateTextMessage:{
             return{...state,
             newMessage: action.text};
-          
-         
         }
         default:  return state;
     }

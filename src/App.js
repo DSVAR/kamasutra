@@ -7,6 +7,8 @@ import "./style.css";
 import {BrowserRouter, Route} from 'react-router-dom'
 import DialogsContainer from "./components/dialogs/DialogsContainer";
 import NavbarContainer from "./components/navbar/NavbarContainer";
+import Users from './components/Users/Users';
+import UsersContainer from './components/Users/UsersContainer';
 
 const App = (props) => {
     return (        
@@ -15,11 +17,15 @@ const App = (props) => {
                 <NavbarContainer/>
 
                 <div className='app-wrapper-content'>
-                    <Route exact path="/dialogs" render={() => <DialogsContainer
-                       
-                    />}/>
+                    <Route exact path="/dialogs" render={() =>
+                         <DialogsContainer/>}/>
+
                     <Route path='/profile' render={() =>
                         <Profile/>}/>
+
+                    <Route path='/users' render={() =>
+                        <UsersContainer/>}/>
+
                 </div>
             </div>
         
