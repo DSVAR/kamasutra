@@ -7,7 +7,7 @@ let mapStateToProps=(state)=>{
     return{
         posts:state.posts.post,
         textNew:state.posts.textNew
-    }
+    }//Отдаем props +отслеживаем состояние компонента
 }
 let mapDispatchToProps=(dispatch)=>{
     return{
@@ -16,7 +16,7 @@ let mapDispatchToProps=(dispatch)=>{
         
         addPost:()=>{dispatch(addPostActionCreator())}
         
-    }
+    }//отдаем callbacks
 }
 const  PostsContainer=connect(mapStateToProps,mapDispatchToProps)(Posts)
 
