@@ -20,24 +20,28 @@ let initialState={
 
 
  const dialogcReducer=(state=initialState,action)=>{
-     let stateCope={...state};
+     
     switch (action.type) {
         case AddMessage: {
+            
             let MessageNew = {
                 ID: 2,
                 Message:state.newMessage,
                 Nick: "Me",
                 Right: true
             };
-
-            stateCope.messages.push(MessageNew);
-            stateCope.newMessage = '';
-            return stateCope;
+            
+            return{...state,           
+            newMessage:'',
+            messages: [...state.messages,MessageNew]};
+           // stateCopy.messages.push(MessageNew);          
         }
 
         case UpdateTextMessage:{
-            stateCope.newMessage = action.text;
-            return stateCope;
+            return{...state,
+            newMessage: action.text};
+          
+         
         }
         default:  return state;
     }
