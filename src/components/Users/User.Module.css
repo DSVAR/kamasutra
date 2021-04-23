@@ -1,0 +1,15 @@
+﻿.item{
+    position: center;
+    border: 1px solid blueviolet;
+    
+}
+.item p{
+    text-align: center;
+}
+.item img{
+    width: 80px;
+    border-radius: 15px;
+}
+.main_View{
+padding: 0 0 0 0;
+}
