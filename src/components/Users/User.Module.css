@@ -1,12 +1,10 @@
 ﻿.item{
-    position: center;
+ 
     border: 1px solid blueviolet;
     
 }
-.item p{
-    text-align: center;
-}
-.item img{
+
+.photoUser{
     width: 80px;
     border-radius: 15px;
 }

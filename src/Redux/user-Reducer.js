@@ -17,24 +17,25 @@ let initialState={
     ]}
 
  const userReducer=(state=initialState,action)=>{
-   
+    debugger;
      switch (action.type)
     {
        case Follow:{
             
         return{
             ...state, users:state.users.map(u=>{
-            if(u.id== action.userId){
-                return{...u, fallowed:true}
+            if(u.ID== action.userId){
+                return{...u, fallowerd:true}
             }
             return u })}
        }
        case Unfollow:{
-            
+           debugger;
         return{
             ...state, users:state.users.map(u=>{
-            if(u.id== action.userId){
-                return{...u, fallowed:false}
+            if(u.ID== action.userId){
+                return{...u, fallowerd:false}
+                
             }
             return u })}
 
@@ -55,7 +56,7 @@ export const followAC = (userId) => ({
     
 })
 export const unFollowAC = (userId) => ({
-    type: Follow,
+    type: Unfollow,
     userId
     
 })
