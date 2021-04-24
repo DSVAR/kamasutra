@@ -10,24 +10,28 @@ let initialState={
 }
 
  const profileReducer=(state=initialState,action)=>{
-
-    switch (action.type) {
-
+     let stateCopy={};
+     switch (action.type) {
         case UpdateMessage: {
-            state.textNew=action.text;
-            return state;
+            return{
+                ...state,
+                textNew: action.text
+            }
         }
         case AddPost: {
 
             let postNew = {
-                ID: 2,
+                ID: 3,
                 Text: state.textNew,
                 Name: "Ratatata",
                 Img:'https://i.ytimg.com/vi/iVFmoi6N9B0/maxresdefault.jpg'
             };
-            state.post.push(postNew);
-            state.textNew=''
-            return state;
+            return{
+                ...state,
+                post:[...state.post,postNew],
+                textNew:''                
+            }
+       
         }
         default:   return state;
 

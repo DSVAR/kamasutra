@@ -1,0 +1,13 @@
+﻿.item{
+ 
+    border: 1px solid blueviolet;
+    
+}
+
+.photoUser{
+    width: 80px;
+    border-radius: 15px;
+}
+.main_View{
+padding: 0 0 0 0;
+}
