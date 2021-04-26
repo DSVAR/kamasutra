@@ -7,12 +7,10 @@ let photoUrl='https://avatars.mds.yandex.net/get-zen_doc/985972/pub_5d63ef4cf73d
 class Users extends React.Component {
      
      
-        
-        constructor(props){
-            super(props);
+        componentDidMount(){
             axios.get("https://social-network.samuraijs.com/api/1.0/users")
-                    .then(response=>{
-                        this.props.setUsers(response.data.items)});
+            .then(response=>{
+                this.props.setUsers(response.data.items)});
 
         }
     render(){
