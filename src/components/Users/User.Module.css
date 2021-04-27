@@ -11,3 +11,7 @@
 .main_View{
 padding: 0 0 0 0;
 }
+
+.pageNumber{
+    font-weight: bold;
+}

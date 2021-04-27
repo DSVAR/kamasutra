@@ -2,6 +2,7 @@ import React from 'react';
 import Classes from './User.Module.css';
 import * as axios from "axios";
 
+
 let photoUrl='https://avatars.mds.yandex.net/get-zen_doc/985972/pub_5d63ef4cf73d9d00adeba678_5d63f06bf73d9d00adeba67e/scale_1200';
     
 class Users extends React.Component {
@@ -14,10 +15,26 @@ class Users extends React.Component {
 
         }
     render(){
+        let pageCount=this.props.totalUser/ this.props.pageSize
+
+        let pages=[];
+        for(let i=1;i<pageCount;i++){
+            pages.push(i);
+        }
+       
         return(
-        <div className={Classes.main_View}>
+       <div className={Classes.main_View}>
+            <div>
+                {pages.map(p=>{
+                  return <span className={this.props.curentPage ==p && Classes.pageNumber}>{p}</span>      
+                })}
+
               
-           {this.props.users.map(u =>
+            </div>
+
+           <div>     
+
+                 {this.props.users.map(u =>
                <div key={u.id} className={Classes.item}>
                    <div> 
                      <img  className={Classes.photoUser} src={u.photos.small !=null ? u.photos.small : photoUrl }/>
@@ -35,7 +52,9 @@ class Users extends React.Component {
                     </div>
                
                </div>
+               
            )}
+           </div>
         </div>
         )
     }

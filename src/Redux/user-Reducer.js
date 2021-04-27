@@ -3,18 +3,11 @@ const Unfollow= 'Unfollow';
 const SET_USERS='SET_USERS';
 
 let initialState={
-    users:[
-        // [{ID: '0',fallowerd:false, Name: 'Ddavar',Locatinon:{city:'moscow',county:'Russia'},status:'im batman',Img:'https://avatars.mds.yandex.net/get-zen_doc/985972/pub_5d63ef4cf73d9d00adeba678_5d63f06bf73d9d00adeba67e/scale_1200'},
-        // {ID: '1', fallowerd:false,Name: 'Sasha',Locatinon:{city:'moscow',county:'Russia'},status:'im batman',Img:'https://avatars.mds.yandex.net/get-zen_doc/985972/pub_5d63ef4cf73d9d00adeba678_5d63f06bf73d9d00adeba67e/scale_1200'},
-        // {ID: '2',fallowerd:false, Name: 'Dima',Locatinon:{city:'moscow',county:'Russia'},status:'im batman',Img:'https://avatars.mds.yandex.net/get-zen_doc/985972/pub_5d63ef4cf73d9d00adeba678_5d63f06bf73d9d00adeba67e/scale_1200'},
-        // {ID: '3',fallowerd:true, Name: 'Vika',Locatinon:{city:'moscow',county:'Russia'},status:'im batman',Img:'https://avatars.mds.yandex.net/get-zen_doc/985972/pub_5d63ef4cf73d9d00adeba678_5d63f06bf73d9d00adeba67e/scale_1200'},
-        // {ID: '4',fallowerd:false, Name: 'Artyr',Locatinon:{city:'Kazan',county:'Russia'},status:'im batman',Img:'https://avatars.mds.yandex.net/get-zen_doc/985972/pub_5d63ef4cf73d9d00adeba678_5d63f06bf73d9d00adeba67e/scale_1200'},
-        // {ID: '5',fallowerd:false, Name: 'Gert',Locatinon:{city:'Kazan',county:'Russia'},status:'im batman',Img:'https://avatars.mds.yandex.net/get-zen_doc/985972/pub_5d63ef4cf73d9d00adeba678_5d63f06bf73d9d00adeba67e/scale_1200'},
-        // {ID: '6',fallowerd:true, Name: 'Der',Locatinon:{city:'Kazan',county:'Russia'},status:'im batman',Img:'https://avatars.mds.yandex.net/get-zen_doc/985972/pub_5d63ef4cf73d9d00adeba678_5d63f06bf73d9d00adeba67e/scale_1200'},
-        // {ID: '7',fallowerd:false, Name: 'Fin',Locatinon:{city:'Kazan',county:'Russia'},status:'im batman',Img:'https://avatars.mds.yandex.net/get-zen_doc/985972/pub_5d63ef4cf73d9d00adeba678_5d63f06bf73d9d00adeba67e/scale_1200'},
-        // {ID: '8',fallowerd:true, Name: 'Din',Locatinon:{city:'Kazan',county:'Russia'},status:'im batman',Img:'https://avatars.mds.yandex.net/get-zen_doc/985972/pub_5d63ef4cf73d9d00adeba678_5d63f06bf73d9d00adeba67e/scale_1200'},
-        // {ID: '9',fallowerd:false, Name: 'Sam',Locatinon:{city:'Kazan',county:'Russia'},status:'im batman',Img:'https://avatars.mds.yandex.net/get-zen_doc/985972/pub_5d63ef4cf73d9d00adeba678_5d63f06bf73d9d00adeba67e/scale_1200'},
-    ]}
+    users:[],
+    pageSize:5,
+    totalUser:20,
+    curentPage:1
+}
 
  const userReducer=(state=initialState,action)=>{
     switch (action.type)
