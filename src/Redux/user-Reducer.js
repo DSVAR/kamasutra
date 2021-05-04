@@ -60,12 +60,12 @@ let initialState={
  }
 
 
-export const followAC = (userId) => ({
+export const follow = (userId) => ({
     type: Follow,
     userId
     
 })
-export const unFollowAC = (userId) => ({
+export const unFollow = (userId) => ({
     type: Unfollow,
     userId
     

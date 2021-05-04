@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { followAC, setUsers, unFollowAC, setCurentPage,setTotalCount,setIsFetching } from '../../Redux/user-Reducer';
+import { follow, setUsers, unFollow, setCurentPage,setTotalCount,setIsFetching } from '../../Redux/user-Reducer';
 import Users from './Users';
 import * as axios from "axios";
 import Preloader from './../common/Preloader/Preloader'
@@ -59,29 +59,36 @@ let mapStateToProps=(state)=>
         isFetching:state.usersPage.isFetching
     }
 }
-let mapDispatchToProps=(dispatch)=>
-{
-    return{
+// let mapDispatchToProps=(dispatch)=>
+// {
+//     return{
         
-        follow:(userId)=>{
-            dispatch(followAC(userId))
-        },
-        unFollow:(userId)=>{
-            dispatch(unFollowAC(userId))
-        },
-        setUsers:(users)=>{
-            dispatch(setUsers(users))
-        },
-        setCurentPage:(pagenumber)=>{
-            dispatch(setCurentPage(pagenumber))
-        },
-        setTotalCount:(totalUser)=>{
-            dispatch(setTotalCount(totalUser))
-        },
-        setIsFetching:(isFetching)=>{
-            dispatch(setIsFetching(isFetching))
-        }
-    }
-}
+//         follow:(userId)=>{
+//             dispatch(followAC(userId))
+//         },
+//         unFollow:(userId)=>{
+//             dispatch(unFollowAC(userId))
+//         },
+//         setUsers:(users)=>{
+//             dispatch(setUsers(users))
+//         },
+//         setCurentPage:(pagenumber)=>{
+//             dispatch(setCurentPage(pagenumber))
+//         },
+//         setTotalCount:(totalUser)=>{
+//             dispatch(setTotalCount(totalUser))
+//         },
+//         setIsFetching:(isFetching)=>{
+//             dispatch(setIsFetching(isFetching))
+//         }
+//     }
+// }
 
-export default connect(mapStateToProps,mapDispatchToProps)(UsersAPIComponent);
+export default connect(mapStateToProps,{        
+    follow,
+    unFollow,
+    setUsers,
+    setCurentPage,
+    setTotalCount,
+    setIsFetching
+    })(UsersAPIComponent);
