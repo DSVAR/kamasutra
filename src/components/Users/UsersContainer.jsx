@@ -10,11 +10,13 @@ class UsersAPIComponent extends React.Component {
      
         componentDidMount(){
          this.props.setIsFetching(true)
+
             axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.curentPage}&count=${this.props.pageSize}`)
             .then(response=>{
                 this.props.setIsFetching(false)       
                 this.props.setUsers(response.data.items);
-                this.props.setTotalCount(response.data.totalCount)});
+                this.props.setTotalCount(response.data.totalCount)
+            });
          
 
         }
@@ -59,6 +61,8 @@ let mapStateToProps=(state)=>
         isFetching:state.usersPage.isFetching
     }
 }
+
+
 // let mapDispatchToProps=(dispatch)=>
 // {
 //     return{

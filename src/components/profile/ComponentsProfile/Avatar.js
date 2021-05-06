@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Avatar = () => {
+const Avatar = (props) => {
     return (
         <div >
-            ava+ descript
+           <img src={props.avatar} />
         </div>
     );
 };

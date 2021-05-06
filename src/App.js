@@ -2,12 +2,11 @@ import React, {Component} from 'react'
 import './App.css';
 import Header from "./components/header/Header";
 import Navbar from "./components/navbar/Navbar";
-import Profile from "./components/profile/Profile";
+import ProfileContainer from "./components/profile/ProfileContainer";
 import "./style.css";
 import {BrowserRouter, Route} from 'react-router-dom'
 import DialogsContainer from "./components/dialogs/DialogsContainer";
 import NavbarContainer from "./components/navbar/NavbarContainer";
-import Users from './components/Users/Users';
 import UsersContainer from './components/Users/UsersContainer';
 
 const App = (props) => {
@@ -21,7 +20,7 @@ const App = (props) => {
                          <DialogsContainer/>}/>
 
                     <Route path='/profile' render={() =>
-                        <Profile/>}/>
+                        <ProfileContainer/>}/>
 
                     <Route path='/users' render={() =>
                         <UsersContainer/>}/>
