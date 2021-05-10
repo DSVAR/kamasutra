@@ -12,7 +12,7 @@ let initialState={
 
  const profileReducer=(state=initialState,action)=>{
      let stateCopy={};
-     debugger;
+  
      switch (action.type) {
      
         case UpdateMessage: {
