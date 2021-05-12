@@ -4,7 +4,7 @@ import Logo from "./HeaderComponents/Logo";
 import {NavLink} from "react-router-dom";
 
 const Header=(props)=>{
-    debugger;
+   
     return(
         <header className={Classes.header}>
             <div>

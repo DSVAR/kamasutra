@@ -1,6 +1,8 @@
 import React from "react";
 import Classes from './User.Module.css';
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
+import {UserApi} from "../../api/api";
 
 
 
@@ -39,8 +41,28 @@ let Users=(props)=>{
                </div>
               <div>
                  {u.followed ? 
-                 <button onClick={()=>{props.unFollow(u.id)}} > unfollow</button> 
-                 : <button onClick={()=>{props.follow(u.id)}}> follow</button>}
+                 <button onClick={()=>{
+                    
+                     UserApi.unfollow(u.id).then(response=>{                            
+                            if(response.resultCode==0){
+                                props.unFollow(u.id);
+                            }    
+                         });
+                    
+                 
+                 }} > unfollow</button> 
+                     
+                     
+                 : <button onClick={()=>{
+                         UserApi.follow(u.id).then(response=>{                             
+                                 if(response.resultCode==0){
+                                     
+                                     props.follow(u.id);
+                                 }
+                             });
+                     
+                 
+                 }}> follow</button>}
               </div>
               <div >
                   <p >{u.name} </p>
@@ -57,4 +79,4 @@ let Users=(props)=>{
     )
 }
 
-export default Users;
+export default Users
