@@ -1,6 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { follow, setUsers, unFollow, setCurentPage,setTotalCount,setIsFetching } from '../../Redux/user-Reducer';
+import {
+    follow,
+    setUsers,
+    unFollow,
+    setCurentPage,
+    setTotalCount,
+    setIsFetching,
+    setIsFollow
+} from '../../Redux/user-Reducer';
 import Users from './Users';
 import * as axios from "axios";
 import Preloader from './../common/Preloader/Preloader'
@@ -42,6 +50,7 @@ class UsersAPIComponent extends React.Component {
             setTotalCount={this.props.setTotalCount} pageSize={this.props.pageSize}
             curentPage={this.props.curentPage} users={this.props.users}
             follow={this.props.follow} unFollow={this.props.unFollow}
+                   setIsFollow={this.props.setIsFollow}  isFollowingProcensing={this.props.isFollowingProcensing}     
             />
 
             </>
@@ -57,35 +66,10 @@ let mapStateToProps=(state)=>
         pageSize:state.usersPage.pageSize,
         totalUser:state.usersPage.totalUser,
         curentPage:state.usersPage.curentPage,
-        isFetching:state.usersPage.isFetching
+        isFetching:state.usersPage.isFetching,
+        isFollowingProcensing:state.usersPage.isFollowingProcensing
     }
 }
-
-
-// let mapDispatchToProps=(dispatch)=>
-// {
-//     return{
-        
-//         follow:(userId)=>{
-//             dispatch(followAC(userId))
-//         },
-//         unFollow:(userId)=>{
-//             dispatch(unFollowAC(userId))
-//         },
-//         setUsers:(users)=>{
-//             dispatch(setUsers(users))
-//         },
-//         setCurentPage:(pagenumber)=>{
-//             dispatch(setCurentPage(pagenumber))
-//         },
-//         setTotalCount:(totalUser)=>{
-//             dispatch(setTotalCount(totalUser))
-//         },
-//         setIsFetching:(isFetching)=>{
-//             dispatch(setIsFetching(isFetching))
-//         }
-//     }
-// }
 
 export default connect(mapStateToProps,{        
     follow,
@@ -93,5 +77,6 @@ export default connect(mapStateToProps,{
     setUsers,
     setCurentPage,
     setTotalCount,
-    setIsFetching
+    setIsFetching,
+    setIsFollow
     })(UsersAPIComponent);

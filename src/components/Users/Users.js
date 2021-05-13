@@ -3,6 +3,7 @@ import Classes from './User.Module.css';
 import {NavLink} from "react-router-dom";
 import * as axios from "axios";
 import {UserApi} from "../../api/api";
+import {setIsFollow} from "../../Redux/user-Reducer";
 
 
 
@@ -40,27 +41,30 @@ let Users=(props)=>{
                 </NavLink>
                </div>
               <div>
+                  
                  {u.followed ? 
-                 <button onClick={()=>{
-                    
+                 <button disabled={props.isFollowingProcensing.some(id=>id===u.id)} onClick={()=>{
+                    props.setIsFollow(true,u.id);
                      UserApi.unfollow(u.id).then(response=>{                            
-                            if(response.resultCode==0){
+                            if(response.resultCode===0){
                                 props.unFollow(u.id);
-                            }    
-                         });
-                    
-                 
+                            }
+                         props.setIsFollow(false,u.id);
+                     });
+                                   
                  }} > unfollow</button> 
                      
                      
-                 : <button onClick={()=>{
+                 : <button disabled={props.isFollowingProcensing.some(id=>id===u.id)} onClick={()=>{
+                         props.setIsFollow(true,u.id);
                          UserApi.follow(u.id).then(response=>{                             
-                                 if(response.resultCode==0){
+                                 if(response.resultCode===0){
                                      
                                      props.follow(u.id);
                                  }
+                             props.setIsFollow(false,u.id);
                              });
-                     
+                        
                  
                  }}> follow</button>}
               </div>
