@@ -1,13 +1,12 @@
 import React from 'react';
-import Classes from './dialog.module.css'
-import {NavLink} from "react-router-dom";
-import User from "./compontsDialogs/User";
-import Message from "./compontsDialogs/Message";
 import {
     addMessageActionCreator, updateInNewMessageActionCreator
 } from "../../Redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
+import {withAuthRedirect} from "../../Hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 
@@ -24,7 +23,10 @@ let mapDispatchToProps=(dispatch)=>{
     }//отдаем callbacks
 }
 
-const DialogsContainer=connect(mapDialogsToProps,mapDispatchToProps)(Dialogs);
 
-export default DialogsContainer;
+export default compose(
+    connect(mapDialogsToProps,mapDispatchToProps),
+    withAuthRedirect
+)(Dialogs)
+
 

@@ -1,3 +1,6 @@
+import axios from "axios";
+import {UserApi} from "../api/api";
+
 const SET_USER_DATA = 'Follow';
 
 
@@ -33,4 +36,18 @@ export const setUserData = (userId,email,login) => ({
     data:{userId,email,login}
 
 })
+
+export const authentication =()=>{
+    return(dispatch)=>{
+        UserApi.authentication()
+            .then(response => {
+                if (response.resultCode === 0) {
+                    let {id, login, email} = response.data;
+                    dispatch(setUserData(id, email, login))
+                }
+            });
+    }
+}
+
+
 export default authReducer;

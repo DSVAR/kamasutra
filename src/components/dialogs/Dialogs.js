@@ -1,5 +1,6 @@
 import React from 'react';
 import Classes from './dialog.module.css'
+import {Redirect} from 'react-router-dom';
 import {NavLink} from "react-router-dom";
 import User from "./compontsDialogs/User";
 import Message from "./compontsDialogs/Message";
@@ -33,20 +34,25 @@ const Dialogs = (props) => {
         let body=  e.target.value;
         props.changeText(body);
     }
-    return (
 
-        <div className={Classes.dialogs}>
-            <div className={Classes.dialogsUser}>
-                {listUsers}
+    if (!props.isAuth)  return <Redirect to={"/login"}/>;
+     
+   
+        return (
+    
+            <div className={Classes.dialogs}>
+                <div className={Classes.dialogsUser}>
+                    {listUsers}
+                </div>
+    
+                <div className={Classes.messages}>
+                    {listMessages}
+                    <textarea onChange={onPostChange} value={props.newMessage}/>
+                    <button onClick={mess}>Отправить</button>
+                </div>
             </div>
-
-            <div className={Classes.messages}>
-                {listMessages}
-                <textarea onChange={onPostChange} value={props.newMessage}/>
-                <button onClick={mess}>Отправить</button>
-            </div>
-        </div>
-    );
+        );
+     
 };
 
 export default Dialogs;

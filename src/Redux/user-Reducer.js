@@ -1,3 +1,5 @@
+import {UserApi} from "../api/api";
+
 const Follow = 'Follow';
 const Unfollow= 'Unfollow';
 const SET_USERS='SET_USERS';
@@ -12,7 +14,7 @@ let initialState={
     totalUser:0,
     curentPage:1,
     isFetching:true,
-    isFollowingProcensing:[2,3] 
+    isFollowingProcensing:[] 
 }
 
  const userReducer=(state=initialState,action)=>{
@@ -68,12 +70,12 @@ let initialState={
  }
 
 
-export const follow = (userId) => ({
+export const acceptFollow = (userId) => ({
     type: Follow,
     userId
     
 })
-export const unFollow = (userId) => ({
+export const acceptUnfollow = (userId) => ({
     type: Unfollow,
     userId
     
@@ -102,4 +104,49 @@ export const setIsFollow=(isFollowingProcensing,userId)=>({
     isFollowingProcensing,
     userId
 })
+
+ 
+export const getUsersThunkCreator=(curentPage,pageSize)=>{
+   return (dispatch)=>{
+       dispatch(setIsFetching(true));
+    
+        UserApi.getUsers(curentPage,pageSize).then(response=>{
+            
+            dispatch( setIsFetching(false));
+            dispatch(setUsers(response.items));
+            dispatch(setTotalCount(response.totalCount))
+            
+        });
+    }
+}
+
+export const follow=(userId)=>{
+    return (dispatch)=>{
+        dispatch(setIsFollow(true,userId));
+        
+        UserApi.follow(userId).then(response => {
+            if (response.resultCode === 0) {
+
+                dispatch(acceptFollow(userId));
+            }
+            dispatch(setIsFollow(false, userId));
+        });
+    }
+}
+
+export const unfollow=(userId)=>{
+    
+    return (dispatch)=>{
+        dispatch(setIsFollow(true,userId));
+        
+        UserApi.unfollow(userId).then(response => {
+            if (response.resultCode === 0) {
+
+                dispatch(acceptUnfollow(userId));
+            }
+            dispatch(setIsFollow(false, userId));
+        });
+    }
+}
+
 export default userReducer;
