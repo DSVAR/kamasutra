@@ -37,3 +37,12 @@ export const  ProfileApi={
       return intance.put('profile/status',{status:status}).then(response=>{return response.data})
    }
 }
+
+export const Auth={
+   login(email,password,rememberMe){
+      return intance.post('/auth/login',{email:email,password:password,rememberMe:rememberMe}).then(response=>{return response.data})
+   },
+   logout(){
+      return intance.delete('/auth/login').then(response=>{return response.data})
+   }
+}

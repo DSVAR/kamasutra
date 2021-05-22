@@ -8,6 +8,7 @@ import NavbarContainer from "./components/navbar/NavbarContainer";
 import UsersContainer from './components/Users/UsersContainer';
 import HeaderContainer from "./components/header/HeaderContainer";
 import Login from "./components/login/login";
+import LoginContainer from "./components/login/loginContainer";
 
 const App = (props) => {
     return (        
@@ -26,7 +27,7 @@ const App = (props) => {
                         <UsersContainer/>}/>
                     
                     <Route path='/login' render={() =>
-                        <Login/>}/>
+                        <LoginContainer/>}/>
 
                 </div>
             </div>

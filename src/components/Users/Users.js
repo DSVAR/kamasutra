@@ -4,8 +4,6 @@ import {NavLink} from "react-router-dom";
 
 
 let Users = (props) => {
-    debugger;
-
     let photoUrl = 'https://avatars.mds.yandex.net/get-zen_doc/985972/pub_5d63ef4cf73d9d00adeba678_5d63f06bf73d9d00adeba67e/scale_1200';
 
     let pageCount = Math.ceil(props.totalUser / props.pageSize);

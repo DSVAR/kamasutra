@@ -1,24 +1,22 @@
-import {updateNewMessageActionCreator,addPostActionCreator} from "../../../Redux/profile-reducer";
+import {addPostActionCreator} from "../../../Redux/profile-reducer";
 import Posts from "./Posts";
 import {connect} from "react-redux";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../../Hoc/withAuthRedirect";
 
 
 let mapStateToProps=(state)=>{
     return{
-        posts:state.posts.post,
-        textNew:state.posts.textNew
+        posts:state.posts.post
     }//Отдаем props +отслеживаем состояние компонента
 }
 let mapDispatchToProps=(dispatch)=>{
     return{
-        updateText:(text)=>{  dispatch(updateNewMessageActionCreator(text))
-        },
-        
-        addPost:()=>{dispatch(addPostActionCreator())}
+        addPost:(text)=>{dispatch(addPostActionCreator(text))}
         
     }//отдаем callbacks
 }
-const  PostsContainer=connect(mapStateToProps,mapDispatchToProps)(Posts)
+export default compose(
+    connect(mapStateToProps,mapDispatchToProps),withAuthRedirect)(Posts)
 
 
-export default PostsContainer;

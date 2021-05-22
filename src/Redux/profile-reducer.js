@@ -1,7 +1,6 @@
 import * as axios from "axios";
 import {ProfileApi, UserApi} from "../api/api";
 
-const UpdateMessage = 'UPDATE-MESSAGE';
 const AddPost = 'ADD-POST';
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const UPDATE_STATUS = 'UPDATE_STATUS';
@@ -26,24 +25,18 @@ const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case UpdateMessage: {
-            return {
-                ...state,
-                textNew: action.text
-            }
-        }
+     
         case AddPost: {
 
             let postNew = {
                 ID: 3,
-                Text: state.textNew,
+                Text: action.text,
                 Name: "Ratatata",
                 Img: 'https://i.ytimg.com/vi/iVFmoi6N9B0/maxresdefault.jpg'
             };
             return {
                 ...state,
-                post: [...state.post, postNew],
-                textNew: ''
+                post: [...state.post, postNew]
             }
 
         }
@@ -76,16 +69,12 @@ const profileReducer = (state = initialState, action) => {
 
 }
 
-export const updateNewMessageActionCreator = (message) => ({
-    type: UpdateMessage,
-    text: message
-})
+
 
 
 export const setStatus = (status) => ({type: SET_STATUS, status})
-export const updateStatus = (status) => ({type: UPDATE_STATUS, status})
 
-export const addPostActionCreator = () => ({type: AddPost})
+export const addPostActionCreator = (text) => ({type: AddPost,text})
 export const setUsersProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
 

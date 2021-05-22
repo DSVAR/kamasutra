@@ -1,36 +1,51 @@
 ﻿import React from "react";
-
-const Login = () => {
-    return (
-        <div>
-            <h1>Login</h1>
-          <LoginForm/>
-        </div>
-    )
-}
+import {Field, reduxForm} from "redux-form";
+import {Input} from "../common/FormsControl/FormsControl";
+import {minLenght, requiredField} from "../../utils/validators/validators";
 
 
-const LoginForm = () => {
+const minLenght1=minLenght(5);
+
+const LoginForm = (props) => {
     return (
 
-        <form>
+        <form onSubmit={props.handleSubmit}>
             <div>
-                <input placeholder={'Login'}/>
+                <Field name={'email'} placeholder={'Login'}  validate={[requiredField, minLenght1]} component={Input}/>
             </div>
 
             <div>
-                <input type={'password'} placeholder={'password'}/>
+                <Field name={'password'}  type={'password'}  validate={[requiredField, minLenght1]} placeholder={'password'} component={Input} />
             </div>
 
             <div>
-                <input type={'checkbox'}/>remember me?
+                <Field name={'rember'}  type={'checkbox'}  validate={[requiredField, minLenght1]}  component={Input}/>remember me?
             </div>
 
             <div>
                 <button>ENTER</button>
             </div>
         </form>
-       
+
     )
 }
+
+const ReduxLoginForm=reduxForm({
+    form:'login'
+})(LoginForm)
+
+const Login = (props) => {
+
+    const onSubmit=(formData)=>{
+        props.entering(formData.email,formData.password,formData.rember)
+    }
+    return (
+        <div>
+            <h1>Login</h1>
+          <ReduxLoginForm onSubmit={onSubmit}/>
+        </div>
+    )
+}
+
+
 export default Login;

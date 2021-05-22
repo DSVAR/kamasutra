@@ -4,11 +4,11 @@ import {Redirect} from 'react-router-dom';
 import {NavLink} from "react-router-dom";
 import User from "./compontsDialogs/User";
 import Message from "./compontsDialogs/Message";
-import {
-    addMessageActionCreator, updateInNewMessageActionCreator
-} from "../../Redux/dialogs-reducer";
+import {Field, reduxForm} from "redux-form";
+import {Input, TextArea} from "../common/FormsControl/FormsControl";
+import {minLenght, requiredField} from "../../utils/validators/validators";
 
-
+const minLenght1=minLenght(5);
 
 const Dialogs = (props) => {
 
@@ -23,18 +23,10 @@ const Dialogs = (props) => {
 
 
 
-    let mess = () => {
-        props.addMess();
-        //props.addMessage(text.current.value);
-        //alert();
+    
+    const addNewMessage=(value)=>{
+        props.addMess(value.message);
     }
-
-    let onPostChange=(e)=>{
-        
-        let body=  e.target.value;
-        props.changeText(body);
-    }
-
     if (!props.isAuth)  return <Redirect to={"/login"}/>;
      
    
@@ -47,13 +39,32 @@ const Dialogs = (props) => {
     
                 <div className={Classes.messages}>
                     {listMessages}
-                    <textarea onChange={onPostChange} value={props.newMessage}/>
-                    <button onClick={mess}>Отправить</button>
+                    <ReduxLoginForm  onSubmit={addNewMessage}/>
                 </div>
             </div>
         );
      
 };
+
+const MessagesForm=(props)=>{
+    
+    return(
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field  name={'message'} placeholder={'piska'} component={Input}  validate={[requiredField, minLenght1]}/>
+            </div>
+            <div>
+                <button >Отправить</button>
+            </div>
+        </form>
+    )
+}
+
+const ReduxLoginForm=reduxForm({
+    form:'Messages'
+})(MessagesForm)
+
+
 
 export default Dialogs;
 

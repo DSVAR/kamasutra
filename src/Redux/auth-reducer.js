@@ -1,7 +1,9 @@
 import axios from "axios";
-import {UserApi} from "../api/api";
+import {Auth, UserApi} from "../api/api";
 
 const SET_USER_DATA = 'Follow';
+const ENTER='ENTER';
+const LOGOUT='LOGOUT';
 
 
 let initialState = {
@@ -22,7 +24,20 @@ const authReducer = (state = initialState, action) => {
                 isAuth: true
             }
         }
-
+        case ENTER:{
+            return {
+                ...state,
+                ...action.data,
+                isAuth: true
+            }
+        }
+        case LOGOUT:{
+            return {
+                ...state,
+                ...action.data,
+                isAuth: false
+            }
+        }
         default:
             return state;
     }
@@ -34,7 +49,16 @@ const authReducer = (state = initialState, action) => {
 export const setUserData = (userId,email,login) => ({
     type: SET_USER_DATA,
     data:{userId,email,login}
+})
 
+
+export const setEnter = (userId,email,login) => ({
+    type: ENTER,
+    data:{userId,email,login}
+
+})
+export const setLogout = () => ({
+    type: LOGOUT
 })
 
 export const authentication =()=>{
@@ -48,6 +72,24 @@ export const authentication =()=>{
             });
     }
 }
-
+export const entering =(email,password,remeberMe)=>{
+    return(dispatch)=>{
+        Auth.login(email,password,remeberMe)
+            .then(response => {
+                if (response.resultCode === 0) {
+                    let {id, login, email} = response.data;
+                    dispatch(setEnter(id, email, login))
+                }
+            });
+    }
+}
+export const logouting =()=>{
+    return(dispatch)=>{
+        Auth.logout()
+            .then(response => {
+               dispatch(setLogout())
+            });
+    }
+}
 
 export default authReducer;

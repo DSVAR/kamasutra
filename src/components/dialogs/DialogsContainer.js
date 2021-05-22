@@ -18,8 +18,7 @@ let mapDialogsToProps=(state)=>{
 }
 let mapDispatchToProps=(dispatch)=>{
     return{
-        addMess:()=>{  dispatch(addMessageActionCreator())},
-        changeText:(body)=>{dispatch(updateInNewMessageActionCreator(body))}
+        addMess:(message)=>{  dispatch(addMessageActionCreator(message))}
     }//отдаем callbacks
 }
 
