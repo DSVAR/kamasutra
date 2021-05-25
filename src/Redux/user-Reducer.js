@@ -109,7 +109,7 @@ export const setIsFollow=(isFollowingProcensing,userId)=>({
 export const getUsersThunkCreator=(curentPage,pageSize)=>{
    return (dispatch)=>{
        dispatch(setIsFetching(true));
-    
+       dispatch(setCurentPage(curentPage))
         UserApi.getUsers(curentPage,pageSize).then(response=>{
             
             dispatch( setIsFetching(false));

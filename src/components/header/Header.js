@@ -13,10 +13,10 @@ const Header=(props)=>{
     return(
         <header className={Classes.header}>
             <div>
-                {props.isAuth ?  props.login :
+                {props.isAuth ? <div> {props.login} --<button onClick={logout}>logout</button> </div>  :
                 <NavLink className={Classes.loginBlock} to={'/login'}>Login</NavLink> }
-                {props.isAuth ?
-                <button onClick={logout}>logout</button> :null}
+                
+                
                  <Logo/>            
                
             </div>

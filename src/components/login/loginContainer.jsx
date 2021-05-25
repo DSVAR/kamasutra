@@ -21,4 +21,4 @@ let mapToProps=(state)=>({
     isAuth:state.auth.isAuth
 })
 
-export default compose(connect(mapToProps, {entering}),withRouter)(LoginContainer);
+export default connect(mapToProps, {entering})(LoginContainer);

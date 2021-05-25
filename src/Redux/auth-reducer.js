@@ -1,5 +1,6 @@
 import axios from "axios";
 import {Auth, UserApi} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'Follow';
 const ENTER='ENTER';
@@ -20,24 +21,10 @@ const authReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                ...action.data,
-                isAuth: true
+                ...action.data
             }
         }
-        case ENTER:{
-            return {
-                ...state,
-                ...action.data,
-                isAuth: true
-            }
-        }
-        case LOGOUT:{
-            return {
-                ...state,
-                ...action.data,
-                isAuth: false
-            }
-        }
+
         default:
             return state;
     }
@@ -46,39 +33,41 @@ const authReducer = (state = initialState, action) => {
 }
 
 
-export const setUserData = (userId,email,login) => ({
+export const setUserData = (userId,email,login,isAuth=false) => ({
     type: SET_USER_DATA,
-    data:{userId,email,login}
+    data:{userId,email,login,isAuth}
 })
 
 
-export const setEnter = (userId,email,login) => ({
-    type: ENTER,
-    data:{userId,email,login}
 
-})
 export const setLogout = () => ({
     type: LOGOUT
 })
+//thunk доступость к dispatch через замыкание
 
 export const authentication =()=>{
     return(dispatch)=>{
-        UserApi.authentication()
+        return UserApi.authentication()
             .then(response => {
                 if (response.resultCode === 0) {
                     let {id, login, email} = response.data;
-                    dispatch(setUserData(id, email, login))
+                    dispatch(setUserData(id, email, login,true))
                 }
             });
     }
 }
 export const entering =(email,password,remeberMe)=>{
     return(dispatch)=>{
+    
+        
         Auth.login(email,password,remeberMe)
             .then(response => {
                 if (response.resultCode === 0) {
-                    let {id, login, email} = response.data;
-                    dispatch(setEnter(id, email, login))
+                    dispatch(setUserData());
+                }
+                else {
+                    let message=response.messages.length>0 ?response.messages[0]: 'some error ';
+                    dispatch(stopSubmit('login',{_error:message}));
                 }
             });
     }
@@ -87,7 +76,7 @@ export const logouting =()=>{
     return(dispatch)=>{
         Auth.logout()
             .then(response => {
-               dispatch(setLogout())
+               dispatch(setUserData(null, null, null,false))
             });
     }
 }

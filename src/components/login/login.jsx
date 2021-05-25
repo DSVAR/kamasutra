@@ -2,7 +2,7 @@
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../common/FormsControl/FormsControl";
 import {minLenght, requiredField} from "../../utils/validators/validators";
-
+import  style from './../common/FormsControl/FormControl.Module.css'
 
 const minLenght1=minLenght(5);
 
@@ -18,8 +18,12 @@ const LoginForm = (props) => {
                 <Field name={'password'}  type={'password'}  validate={[requiredField, minLenght1]} placeholder={'password'} component={Input} />
             </div>
 
+            { props.error && <div className={style.formError}>
+                {props.error }
+            </div>}
+            
             <div>
-                <Field name={'rember'}  type={'checkbox'}  validate={[requiredField, minLenght1]}  component={Input}/>remember me?
+                <Field name={'rember'}  type={'checkbox'}    component={Input}/>remember me?
             </div>
 
             <div>
