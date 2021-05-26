@@ -3,6 +3,7 @@ import Avatar from "./Avatar";
 import Wallpaper from "./Wallpaper";
 import Preloader from './../../common/Preloader/Preloader'
 import Status from "./Status";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
     if(!props.profile){
@@ -13,7 +14,7 @@ const ProfileInfo = (props) => {
         <div>
             <Wallpaper />
             <Avatar avatar={props.profile.photos.small}/>
-           <Status status={props.status} updateStatus={props.updateStatus} />
+           <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
         </div>
     );
 };
