@@ -3,7 +3,6 @@ import preLoaderGif from './../../../Images/loading.gif';
 import Classes from './Style.Module.css';
 
 let Preloader = (props) => {
-debugger;
     return (
         
         <div>

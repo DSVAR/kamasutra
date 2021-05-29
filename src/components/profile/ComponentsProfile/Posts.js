@@ -1,24 +1,24 @@
 import React from 'react';
-import Classes from './ComponentsProfile.module.css'
 import Post from "./Post";
-import {updateNewMessageActionCreator, addPostActionCreator} from "../../../Redux/profile-reducer";
 import {Field, reduxForm} from "redux-form";
 import {minLenght, requiredField} from "../../../utils/validators/validators";
 import {TextArea} from "../../common/FormsControl/FormsControl";
 
-let minLenght1=minLenght(5);
+let minLenght1 = minLenght(5);
 
-const Posts = (props) => {
-
+const Posts=React.memo((props)=>{
+    console.log('Render')
     let posts = props.posts.map(
         post =>
             <Post key={post.id} Photourl={post.Img} Name={post.Name} Text={post.Text}/>
     )
 
-  
-const addPost=(value)=>{
+
+    const addPost = (value) => {
+        debugger
         props.addPost(value.PostArea)
-}
+    }
+
     return (
 
         <div>
@@ -29,14 +29,14 @@ const addPost=(value)=>{
 
         </div>
     );
-};
+})
 
 
 const formPost = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <Field name={'PostArea'} component={TextArea}
-            validate={[requiredField,minLenght1]}
+                   validate={[requiredField, minLenght1]}
             />
             <button>Add post</button>
         </form>
