@@ -1,30 +1,24 @@
 ﻿import React from "react";
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../common/FormsControl/FormsControl";
+import {createField, Input} from "../common/FormsControl/FormsControl";
 import {minLenght, requiredField} from "../../utils/validators/validators";
 import  style from './../common/FormsControl/FormControl.Module.css'
 
 const minLenght1=minLenght(5);
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit,error}) => {
     return (
 
-        <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field name={'email'} placeholder={'Login'}  validate={[requiredField, minLenght1]} component={Input}/>
-            </div>
+        <form onSubmit={handleSubmit}>
+            {createField('email','Login',[requiredField, minLenght1],Input)}       
+            {createField('password','password',[requiredField, minLenght1],Input,'password')}
+       
 
-            <div>
-                <Field name={'password'}  type={'password'}  validate={[requiredField, minLenght1]} placeholder={'password'} component={Input} />
-            </div>
-
-            { props.error && <div className={style.formError}>
-                {props.error }
+            { error && <div className={style.formError}>
+                {error }
             </div>}
-            
-            <div>
-                <Field name={'rember'}  type={'checkbox'}    component={Input}/>remember me?
-            </div>
+            {createField('rember','',[],Input,'checkbox','remember me?')}
+        
 
             <div>
                 <button>ENTER</button>

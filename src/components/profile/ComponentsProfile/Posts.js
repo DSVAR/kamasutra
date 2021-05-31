@@ -7,7 +7,6 @@ import {TextArea} from "../../common/FormsControl/FormsControl";
 let minLenght1 = minLenght(5);
 
 const Posts=React.memo((props)=>{
-    console.log('Render')
     let posts = props.posts.map(
         post =>
             <Post key={post.id} Photourl={post.Img} Name={post.Name} Text={post.Text}/>
