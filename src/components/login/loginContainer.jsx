@@ -1,6 +1,6 @@
 ﻿import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {entering} from "../../Redux/auth-reducer";
+import {entering,authentication} from "../../Redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import Login from "./login";
 
@@ -20,4 +20,4 @@ let mapToProps=(state)=>({
     isAuth:state.auth.isAuth
 })
 
-export default connect(mapToProps, {entering})(LoginContainer);
+export default connect(mapToProps, {entering,authentication})(LoginContainer);
