@@ -1,6 +1,5 @@
 ﻿import React, {useEffect, useState} from 'react';
 
-let butt=true
 
 const ProfileStatusWithHooks = (props) => {
 
