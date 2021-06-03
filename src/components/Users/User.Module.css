@@ -9,9 +9,15 @@
     border-radius: 15px;
 }
 .main_View{
-padding: 0 0 0 0;
+    margin: 10px;
 }
 
-.pageNumber{
+.pageNumber {
+    padding: 2px;
+    border: 1px solid grey;
+}
+
+.pageNumber.selectedPage {
     font-weight: bold;
+    border-color: black;
 }

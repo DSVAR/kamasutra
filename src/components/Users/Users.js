@@ -15,7 +15,7 @@ let Users = ({
 
         <div className={Classes.main_View}>
 
-            <Paginator curentPage={curentPage} onPageChanged={onPageChanged} totalUser={totalUser} pageSize={pageSize}/>
+            <Paginator currentPage={curentPage} onPageChanged={onPageChanged} totalItem={totalUser} pageSize={pageSize}/>
             <div>
 
                 {props.users.map(u => <User key={u.id} user={u} follow={follow} unfollow={unfollow}

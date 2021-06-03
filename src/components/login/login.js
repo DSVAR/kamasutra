@@ -35,9 +35,8 @@ const ReduxLoginForm=reduxForm({
 const Login = (props) => {
 
     const onSubmit=async(formData)=>{
-     let response=   await props.entering(formData.email,formData.password,formData.rember)
-     if(response.resultCode===0)
-       await props.authentication();
+     await props.entering(formData.email,formData.password,formData.rember)
+     await props.authentication();
     }
     return (
         <div>
